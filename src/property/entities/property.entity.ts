@@ -1,5 +1,7 @@
+import { IsNumber, IsObject, isObject } from "class-validator";
 import { Agent } from "src/agent/entities/agent.entity";
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { PropertyReservation } from "src/property-reservation/entities/property-reservation.entity";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, } from "typeorm";
 
 @Entity()
 export class Property {
@@ -19,8 +21,18 @@ export class Property {
     @Column()
     description: string;
 
-    @OneToMany(() => Agent, (agent) => agent.property, {cascade: true} )
-    agents: Agent[]
+    @Column()
+    @IsNumber()
+    @IsObject()
+    agentId: number
+
+    @ManyToOne(() => Agent, agent => agent.properties,{ onDelete: 'CASCADE' })
+    @JoinColumn({ name: 'agentId' })
+    agent: Agent;
+
+    @OneToMany(() => PropertyReservation, reservation => reservation.property)
+    reservations: PropertyReservation[]
+
 
 
 

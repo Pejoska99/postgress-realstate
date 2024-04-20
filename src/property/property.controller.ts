@@ -5,13 +5,13 @@ import { UpdatePropertyDto } from './dto/update-property.dto';
 import { Property } from './entities/property.entity';
 
 
-@UsePipes(
-  new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
-    transform: true,
-  }),
-)
+// @UsePipes(
+//   new ValidationPipe({
+//     whitelist: true,
+//     forbidNonWhitelisted: true,
+//     transform: true,
+//   }),
+// )
 
 @Controller('property')
 export class PropertyController {

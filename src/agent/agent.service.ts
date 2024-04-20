@@ -17,15 +17,10 @@ export class AgentService {
   }
   
 
-  // async findOne(id: number): Promise<Agent>  {
-  //   return this.agentRepository.findOneBy({ id })
-  // }
-
   async findOne(id: number): Promise<Agent> {
     return this.agentRepository.findOne({ where: { id }, relations: ['properties'] });
   }
-  
-  
+   
   async create(createAgentDto: CreateAgentDto): Promise<Agent> {
     const agent = this.agentRepository.create(createAgentDto);
     await this.agentRepository.save(agent);
@@ -43,6 +38,7 @@ export class AgentService {
   }
 
   async remove(id: number): Promise<void> {
-   await this.agentRepository.delete
+   await this.agentRepository.delete(id)
   }
 }
+

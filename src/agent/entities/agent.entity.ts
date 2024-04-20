@@ -1,6 +1,6 @@
 import { Property } from "src/property/entities/property.entity";
 import { Agency } from "src/util/agency.enum";
-import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Agent {
@@ -19,11 +19,7 @@ export class Agent {
     @Column({ type: 'enum', enum: Agency })
     agency: Agency;
 
-    @Column()
-    propertyId: number;
-
-    @ManyToOne(() => Property, (property) => property.agents)
-    @JoinColumn({name:'propertyId'})
-    property: Property
+    @OneToMany(() => Property, property => property.agent,{cascade: true})
+    properties: Property[];
 
 }

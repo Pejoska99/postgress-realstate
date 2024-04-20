@@ -1,4 +1,4 @@
-import { IsEnum, IsNumber, IsString, MinLength } from "class-validator";
+import { IsEnum, IsNumber, IsString, MinLength, } from "class-validator";
 import { Agency } from "src/util/agency.enum";
 
 export class CreateAgentDto {
@@ -9,11 +9,13 @@ export class CreateAgentDto {
     @IsString()
     readonly email: string;
 
-    @IsNumber()
-    readonly phonenumber: number;
+    @IsString()
+    readonly phoneNumber: string;
 
     @IsEnum(Agency)
     readonly agency: Agency;
+
+    
 
 
 }

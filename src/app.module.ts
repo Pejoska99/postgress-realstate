@@ -5,6 +5,7 @@ import { AgentModule } from './agent/agent.module';
 import { PropertyModule } from './property/property.module';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database/database.module';
+import { PropertyReservationModule } from './property-reservation/property-reservation.module';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { DatabaseModule } from './database/database.module';
     }),
     
     
-    AgentModule, PropertyModule, DatabaseModule],
+    AgentModule, PropertyModule, DatabaseModule, PropertyReservationModule],
   controllers: [AppController],
   providers: [AppService],
 })
