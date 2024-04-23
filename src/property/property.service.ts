@@ -38,7 +38,6 @@ export class PropertyService {
    return property
   }
 
- 
 
   async update(
     id: number,

@@ -1,4 +1,6 @@
-import { IsDateString, IsNumber, IsString } from "class-validator";
+import { IsDateString, IsEnum, IsNumber, IsString } from "class-validator";
+import { ReservationStatus } from "src/util/reservation-status.enum";
+
 
 export class CreatePropertyReservationDto {
     
@@ -14,8 +16,14 @@ export class CreatePropertyReservationDto {
     @IsDateString()
     readonly endDate: Date;
 
-    @IsString()
-    status: string
+    // @IsString()
+    // status: string
+
+    @IsEnum(ReservationStatus)
+    readonly agency: ReservationStatus;
+
+   
+
 
 
 
