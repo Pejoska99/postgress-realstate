@@ -26,6 +26,7 @@ export class Property {
     @IsObject()
     agentId: number
 
+
     @ManyToOne(() => Agent, agent => agent.properties,{ onDelete: 'CASCADE' })
     @JoinColumn({ name: 'agentId' })
     agent: Agent;

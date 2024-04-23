@@ -19,7 +19,12 @@ export class Agent {
     @Column({ type: 'enum', enum: Agency })
     agency: Agency;
 
+    
     @OneToMany(() => Property, property => property.agent,{cascade: true})
     properties: Property[];
+    
+
+   
+
 
 }

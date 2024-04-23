@@ -12,19 +12,17 @@ export class PropertyReservation {
     @Column()
     customerId: number
 
+    @Column({type: 'date'})
+    startDate: Date;
 
-     @Column({type: 'date'})
-     startDate: Date;
+    @Column({type: 'date'})
+    endDate: Date;
 
-     @Column({type: 'date'})
-     endDate: Date;
+    @Column({default: 'pending'})
+    status: string
 
-     @Column({default: 'pending'})
-     status: string
-
-
-     @ManyToOne(() => Property, property => property.reservations)
-     property: Property
+    @ManyToOne(() => Property, property => property.reservations)
+    property: Property
      
 }
 

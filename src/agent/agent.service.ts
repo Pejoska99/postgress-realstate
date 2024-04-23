@@ -5,11 +5,13 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Agent } from './entities/agent.entity';
 import { Repository } from 'typeorm';
 
+
 @Injectable()
 export class AgentService {
   constructor(
     @InjectRepository(Agent)
-    private agentRepository: Repository<Agent>
+    private agentRepository: Repository<Agent>,
+    
   ) {}
 
   async findAll(): Promise<Agent[]> {
@@ -40,5 +42,11 @@ export class AgentService {
   async remove(id: number): Promise<void> {
    await this.agentRepository.delete(id)
   }
+
+
+
+  
+
+
 }
 

@@ -4,7 +4,7 @@ import { UpdatePropertyDto } from './dto/update-property.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Property } from './entities/property.entity';
 import { Repository } from 'typeorm';
-import { Agent } from 'src/agent/entities/agent.entity';
+
 
 @Injectable()
 export class PropertyService {
@@ -16,7 +16,7 @@ export class PropertyService {
 
   async findAll(): Promise<Property[]> {
     return this.propertyRepository.find({
-      relations: { agent: true}
+      relations: { agent: true, reservations: true}
     });
   }
 
@@ -67,4 +67,6 @@ export class PropertyService {
   //     .where('LOWER(property.name) = LOWER(:name)', { name })
   //     .getMany();
   // }
+
+
 }
