@@ -45,4 +45,6 @@ export class AgentProfileService {
   async remove(id: number): Promise<void> {
    this.agentProfileRepository.delete({ id })
   }
+
+  
 }
