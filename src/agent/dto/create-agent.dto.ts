@@ -15,7 +15,6 @@ export class CreateAgentDto {
     @IsEnum(Agency)
     readonly agency: Agency;
 
-    
 
 
 }

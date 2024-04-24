@@ -6,6 +6,7 @@ import { Agent } from './entities/agent.entity';
 import { Repository } from 'typeorm';
 
 
+
 @Injectable()
 export class AgentService {
   constructor(
@@ -16,11 +17,17 @@ export class AgentService {
 
   async findAll(): Promise<Agent[]> {
     return this.agentRepository.find();
+
   }
   
 
   async findOne(id: number): Promise<Agent> {
-    return this.agentRepository.findOne({ where: { id }, relations: ['properties'] });
+    return this.agentRepository.findOne ({ 
+      where: { id },
+      relations: { properties:true, 
+       agentProfile: true,
+      }
+     })
   }
    
   async create(createAgentDto: CreateAgentDto): Promise<Agent> {

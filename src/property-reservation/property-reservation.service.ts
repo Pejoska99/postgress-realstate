@@ -4,7 +4,7 @@ import { UpdatePropertyReservationDto } from './dto/update-property-reservation.
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { PropertyReservation } from './entities/property-reservation.entity';
-import { v4 as uuidv4 } from 'uuid';
+
 
 @Injectable()
 export class PropertyReservationService {
@@ -19,7 +19,7 @@ export class PropertyReservationService {
   }
 
   async findOne(id: number): Promise<PropertyReservation> {
-    return this.reservationRepository.findOne({ where: { id } });
+    return this.reservationRepository.findOne({ where: { id }, relations: {property: true} });
   }
   
 

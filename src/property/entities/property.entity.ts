@@ -1,4 +1,4 @@
-import { IsNumber, IsObject, isObject } from "class-validator";
+import { IsNumber } from "class-validator";
 import { Agent } from "src/agent/entities/agent.entity";
 import { PropertyReservation } from "src/property-reservation/entities/property-reservation.entity";
 import { Column, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn, } from "typeorm";
@@ -23,7 +23,7 @@ export class Property {
 
     @Column()
     @IsNumber()
-    @IsObject()
+  
     agentId: number
 
 

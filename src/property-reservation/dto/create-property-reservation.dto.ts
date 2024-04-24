@@ -20,7 +20,7 @@ export class CreatePropertyReservationDto {
     // status: string
 
     @IsEnum(ReservationStatus)
-    readonly agency: ReservationStatus;
+    readonly status: ReservationStatus;
 
    
 

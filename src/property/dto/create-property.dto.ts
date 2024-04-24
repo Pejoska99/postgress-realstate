@@ -1,4 +1,4 @@
-import { IsInt, IsString, Min, MinLength } from "class-validator";
+import { IsInt, IsNumber, IsString, Min, MinLength } from "class-validator";
 
 export class CreatePropertyDto {
     
@@ -16,5 +16,8 @@ export class CreatePropertyDto {
     @IsString()
     @MinLength(2)
     readonly description: string
+
+    @IsNumber()
+    readonly agentId: number
 
 }
