@@ -21,26 +21,25 @@ export class AgentService {
   ): Promise<Agent[]> {
     // return this.agentRepository.find();
     const options = {
-      realations: ['agentProfile', 'properties'],
+      relations: ['profile', 'properties'],
       where: {},
   }
   if(name) {
     options.where['name'] = name;
   }
   if(agency) {
-    options.where[' agency'] = agency;
+    options.where['agency'] = agency;
   }
 
     return this.agentRepository.find(options)
 }
-
-  
+ 
 
   async findOne(id: number): Promise<Agent> {
     return this.agentRepository.findOne ({ 
       where: { id },
       relations: { properties:true, 
-       agentProfile: true,
+       profile: true,
       }
      })
   }

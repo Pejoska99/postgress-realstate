@@ -5,7 +5,7 @@ import { UpdateAgentProfileDto } from './dto/update-agent-profile.dto';
 
 @Controller('agent-profile')
 export class AgentProfileController {
-  constructor(private readonly agentProfileService: AgentProfileService) {}
+   constructor(private readonly agentProfileService: AgentProfileService) {}
 
 
   @Get()

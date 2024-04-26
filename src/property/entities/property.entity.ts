@@ -26,7 +26,6 @@ export class Property {
 
     @Column()
     @IsNumber()
-
     agentId: number
 
 
@@ -34,7 +33,7 @@ export class Property {
     @JoinColumn({ name: 'agentId' })
     agent: Agent;
 
-    @OneToMany(() => PropertyReservation, reservation => reservation.property)
+    @OneToMany(() => PropertyReservation, reservation => reservation.property,{cascade:true})
     reservations: PropertyReservation[]
 
 

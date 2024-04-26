@@ -13,12 +13,14 @@ export class AgentProfile {
     @Column()
     specialties: string;
 
-    @Column()
-    @IsNumber()
-    agentId: number
+    // @Column()
+    // @IsNumber()
+    // agentId: number
 
-    @OneToOne(() => Agent, (agent) => agent.agentProfile)
-    @JoinColumn({name: 'agentId'})
+    // @OneToOne(() => Agent, (agent) => agent.agentProfile)
+    // @JoinColumn({name: 'agentId'})
+    // agent: Agent;
+    @OneToOne(() => Agent, (agent) => agent.profile)
     agent: Agent;
 
  

@@ -1,6 +1,6 @@
 import { Property } from "src/property/entities/property.entity";
 import { ReservationStatus } from "src/util/reservation-status.enum";
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class PropertyReservation {
@@ -30,6 +30,7 @@ export class PropertyReservation {
 
 
     @ManyToOne(() => Property, property => property.reservations)
+    @JoinColumn({ name: 'propertyId'})
     property: Property
      
 }

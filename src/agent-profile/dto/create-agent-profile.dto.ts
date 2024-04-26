@@ -9,9 +9,7 @@ export class CreateAgentProfileDto {
     @IsString()
     readonly specialties: string
 
-    @IsNumber()
-    @IsNotEmpty()
-    readonly agentId: number
+    
     
 
 }

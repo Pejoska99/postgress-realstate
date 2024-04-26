@@ -22,14 +22,14 @@ export class PropertyService {
     //   relations: { agent: true, reservations: true}
     // });
     const options = {
-      realations: ['agent', 'reservations'],
+      realtions: ['agent', 'reservations'],
       where: {},
   }
   if(type) {
     options.where['type'] = type;
   }
   if(location) {
-    options.where[' location'] = location;
+    options.where['location'] = location;
   }
 
     return this.propertyRepository.find(options)

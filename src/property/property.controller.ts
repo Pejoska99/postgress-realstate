@@ -6,14 +6,6 @@ import { Property } from './entities/property.entity';
 import { ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiQuery } from '@nestjs/swagger';
 
 
-@UsePipes(
-  new ValidationPipe({
-    whitelist: true,
-    forbidNonWhitelisted: true,
-    transform: true,
-  }),
-)
-
 @Controller('property')
 export class PropertyController {
   constructor(private readonly propertyService: PropertyService) {}

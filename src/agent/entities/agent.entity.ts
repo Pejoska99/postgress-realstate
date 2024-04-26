@@ -1,4 +1,4 @@
-import { agentProfile } from "src/agent-profile/dto/agent-profile.dto";
+
 import { AgentProfile } from "src/agent-profile/entities/agent-profile.entity";
 import { Property } from "src/property/entities/property.entity";
 import { Agency } from "src/util/agency.enum";
@@ -21,14 +21,13 @@ export class Agent {
     @Column({ type: 'enum', enum: Agency })
     agency: Agency;
 
-    
-    @OneToMany(() => Property, property => property.agent,{cascade: true})
-    properties: Property[];
 
+    @OneToMany(() => Property, (property) => property.agent, { cascade: true })
+  properties: Property[];
 
-    @OneToOne(() => AgentProfile, (profile) => profile.agent,{cascade: true} )
-    agentProfile :AgentProfile
-    
+  @OneToOne(() => AgentProfile, (profile) => profile.agent, { cascade: true })
+  @JoinColumn()
+  profile: AgentProfile;
    
     
 
