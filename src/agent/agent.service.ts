@@ -15,10 +15,25 @@ export class AgentService {
     
   ) {}
 
-  async findAll(): Promise<Agent[]> {
-    return this.agentRepository.find();
-
+  async findAll(
+    name?: string,
+    agency?: string
+  ): Promise<Agent[]> {
+    // return this.agentRepository.find();
+    const options = {
+      realations: ['agentProfile', 'properties'],
+      where: {},
   }
+  if(name) {
+    options.where['name'] = name;
+  }
+  if(agency) {
+    options.where[' agency'] = agency;
+  }
+
+    return this.agentRepository.find(options)
+}
+
   
 
   async findOne(id: number): Promise<Agent> {
@@ -45,6 +60,8 @@ export class AgentService {
     await this.agentRepository.save(student);
     return student;
   }
+
+
 
   async remove(id: number): Promise<void> {
    await this.agentRepository.delete(id)

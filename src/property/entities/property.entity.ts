@@ -16,6 +16,9 @@ export class Property {
     price: number;
 
     @Column()
+    type: string;
+    
+    @Column()
     location: string;
 
     @Column()
@@ -23,7 +26,7 @@ export class Property {
 
     @Column()
     @IsNumber()
-  
+
     agentId: number
 
 

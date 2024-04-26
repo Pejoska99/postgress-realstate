@@ -14,10 +14,26 @@ export class PropertyService {
   ){}
   
 
-  async findAll(): Promise<Property[]> {
-    return this.propertyRepository.find({
-      relations: { agent: true, reservations: true}
-    });
+  async findAll(
+    type?: string,
+    location?: string,
+  ): Promise<Property[]> {
+    // return this.propertyRepository.find({
+    //   relations: { agent: true, reservations: true}
+    // });
+    const options = {
+      realations: ['agent', 'reservations'],
+      where: {},
+  }
+  if(type) {
+    options.where['type'] = type;
+  }
+  if(location) {
+    options.where[' location'] = location;
+  }
+
+    return this.propertyRepository.find(options)
+
   }
 
   async findOne(id: number): Promise<Property> {
@@ -52,20 +68,6 @@ export class PropertyService {
   async remove(id: number): Promise<void>{
     await this.propertyRepository.delete(id)
   }
-
-  async findByName(name: string): Promise<Property[]> {
-    const query = `SELECT * FROM property WHERE name <= $1`;
-    const properties = await this.propertyRepository.query(query, [name]);
-    return properties;
-  }
-
-  
-  // async findByName(name: string): Promise<Property[]> {
-  //   return this.propertyRepository
-  //     .createQueryBuilder('property')
-  //     .where('LOWER(property.name) = LOWER(:name)', { name })
-  //     .getMany();
-  // }
 
 
 }

@@ -1,4 +1,6 @@
-import { IsEnum, IsNumber, IsString, MinLength, } from "class-validator";
+import { Type } from "class-transformer";
+import { IsEnum, IsNumber, IsObject, IsString, MinLength, ValidateNested, } from "class-validator";
+import { CreateAgentProfileDto } from "src/agent-profile/dto/create-agent-profile.dto";
 import { Agency } from "src/util/agency.enum";
 
 export class CreateAgentDto {
@@ -14,7 +16,12 @@ export class CreateAgentDto {
 
     @IsEnum(Agency)
     readonly agency: Agency;
+    
+    @ValidateNested()
+    @IsObject()
+    @Type(() => CreateAgentProfileDto)
+    profile: CreateAgentProfileDto;
+  }
 
 
 
-}

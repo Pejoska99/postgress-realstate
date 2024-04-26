@@ -25,15 +25,11 @@ export class Agent {
     @OneToMany(() => Property, property => property.agent,{cascade: true})
     properties: Property[];
 
-    @Column({ nullable: true }) // agentProfileId ќе биде nullable, бидејќи не секогаш ќе имаме агентски профил
-    agentProfileId: number;
 
-    @OneToOne(() => AgentProfile, {cascade: true} )
-    @JoinColumn()
+    @OneToOne(() => AgentProfile, (profile) => profile.agent,{cascade: true} )
     agentProfile :AgentProfile
     
-
    
-
+    
 
 }

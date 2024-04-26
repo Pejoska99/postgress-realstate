@@ -1,4 +1,4 @@
-import { IsNumber, IsString } from "class-validator";
+import { IsNumber} from "class-validator";
 import { Agent } from "src/agent/entities/agent.entity";
 import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
@@ -17,10 +17,13 @@ export class AgentProfile {
     @IsNumber()
     agentId: number
 
-    @OneToOne(() => Agent, agent => agent.agentProfile)
-    @JoinColumn()
+    @OneToOne(() => Agent, (agent) => agent.agentProfile)
+    @JoinColumn({name: 'agentId'})
     agent: Agent;
+
+ 
+  }
     
 
 
-}
+

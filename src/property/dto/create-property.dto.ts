@@ -8,6 +8,9 @@ export class CreatePropertyDto {
     @IsInt()
     @Min(0)
     readonly price: number;
+;
+    @IsString()
+    readonly type: string
 
     @IsString()
     @MinLength(2)

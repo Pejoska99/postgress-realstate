@@ -16,9 +16,6 @@ export class CreatePropertyReservationDto {
     @IsDateString()
     readonly endDate: Date;
 
-    // @IsString()
-    // status: string
-
     @IsEnum(ReservationStatus)
     readonly status: ReservationStatus;
 
