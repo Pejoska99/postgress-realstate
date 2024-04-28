@@ -8,6 +8,7 @@ import { DatabaseModule } from './database/database.module';
 import { PropertyReservationModule } from './property-reservation/property-reservation.module';
 import { APP_PIPE } from '@nestjs/core';
 import { AgentProfileModule } from './agent-profile/agent-profile.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { AgentProfileModule } from './agent-profile/agent-profile.module';
     }),
     
     
-    AgentModule, PropertyModule, DatabaseModule, PropertyReservationModule, AgentProfileModule],
+    AgentModule, PropertyModule, DatabaseModule, PropertyReservationModule, AgentProfileModule, AuthModule],
   controllers: [AppController],
   providers: [AppService,
     {
