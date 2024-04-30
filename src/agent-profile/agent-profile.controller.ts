@@ -18,10 +18,10 @@ export class AgentProfileController {
     return this.agentProfileService.findOne(+id);
   }
 
-  @Post()
-  create(@Body() createAgentProfileDto: CreateAgentProfileDto) {
-    return this.agentProfileService.create(createAgentProfileDto);
-  }
+  // @Post()
+  // create(@Body() createAgentProfileDto: CreateAgentProfileDto) {
+  //   return this.agentProfileService.create(createAgentProfileDto);
+  // }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateAgentProfileDto: UpdateAgentProfileDto) {

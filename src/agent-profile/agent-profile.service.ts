@@ -28,12 +28,12 @@ export class AgentProfileService {
    
   }
 
-  async create(createAgentProfileDto: CreateAgentProfileDto): Promise<AgentProfile> {
-    const newAgentProperties = this.agentProfileRepository.create(createAgentProfileDto)
-    await this.agentProfileRepository.save(newAgentProperties)
-    return newAgentProperties
+  // async create(createAgentProfileDto: CreateAgentProfileDto): Promise<AgentProfile> {
+  //   const newAgentProperties = this.agentProfileRepository.create(createAgentProfileDto)
+  //   await this.agentProfileRepository.save(newAgentProperties)
+  //   return newAgentProperties
 
-  }
+  // }
 
   async update(id: number, updateAgentProfileDto: UpdateAgentProfileDto): Promise<AgentProfile> {
     let newAgentProperties = await this.agentProfileRepository.findOneBy ({ id });

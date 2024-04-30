@@ -76,6 +76,7 @@ export class PropertyController {
     description: 'Updated a property successfully',
   })
   @Patch(':id')
+  @Roles(Role.Admin)
   update(@Param('id') id: string, @Body() updatePropertyDto: UpdatePropertyDto):Promise<Property> {
     return this.propertyService.update(+id, updatePropertyDto);
   }

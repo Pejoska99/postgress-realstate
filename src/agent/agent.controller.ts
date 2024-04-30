@@ -1,11 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UsePipes, ValidationPipe, Query, UseGuards } from '@nestjs/common';
 import { AgentService } from './agent.service';
 import { CreateAgentDto } from './dto/create-agent.dto';
 import { UpdateAgentDto } from './dto/update-agent.dto';
 import { Agent } from './entities/agent.entity';
-import { ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiQuery } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiQuery, ApiTags } from '@nestjs/swagger';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
+import { RolesGuard } from 'src/guards/roles.guard';
+import { Roles } from 'src/decorators/roles.decorators';
+import { Role } from 'src/util/role.enum';
 
-
+@UseGuards(JwtAuthGuard, RolesGuard)
+@ApiTags('agent')
+@ApiBearerAuth()
 @Controller('agent')
 export class AgentController {
   constructor(private readonly agentService: AgentService) {}
@@ -52,6 +58,7 @@ export class AgentController {
     description: ' Agent created successfully'
   })
   @Post()
+  @Roles(Role.Admin)
   create(@Body() createAgentDto: CreateAgentDto) {
     return this.agentService.create(createAgentDto);
   }
@@ -62,6 +69,7 @@ export class AgentController {
     description: 'Updated an agent successfully',
   })
   @Patch(':id')
+  @Roles(Role.Admin)
   update(@Param('id') id: string, @Body() updateAgentDto: UpdateAgentDto) {
     return this.agentService.update(+id, updateAgentDto);
   }
@@ -71,6 +79,7 @@ export class AgentController {
     description: 'Agent deleted successfully',
   })
   @Delete(':id')
+  @Roles(Role.Admin)
   remove(@Param('id') id: string) {
     return this.agentService.remove(+id);
   }
